@@ -102,3 +102,11 @@ function cloneRepo() {
   url = null;
   $('#repo-modal').modal('hide');
 }
+
+function signInOrOut() {
+  let doc = document.getElementById("avatar");
+  if (doc.innerHTML == 'Sign out'){
+    $('#avatar').removeAttr('data-toggle');
+    window.location.href = "index.html";
+  }
+}
