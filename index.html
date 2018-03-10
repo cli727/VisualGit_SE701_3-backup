@@ -78,7 +78,15 @@ $('#repo-modal').on('hidden.bs.modal', function (e) {
            callback: function(itemKey, opt) {
              let content = $trigger.text();
              console.log(repoFullPath + "/" + content);
-             opn(repoFullPath + "/" + content);
+             let doc = document.getElementById("diff-panel-body");
+             doc.contentEditable = "true";
+             doc.innerHTML = content;
+             let saveButton = document.getElementById("save-button");
+             let cancelButton = document.getElementById("cancel-button");
+             saveButton.disabled = false;
+             cancelButton.disabled = false;
+             
+             //opn(repoFullPath + "/" + content);
            }
          }
        }

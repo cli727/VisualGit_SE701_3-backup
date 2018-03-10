@@ -54,11 +54,13 @@ function hideAddRepositoryPanel() {
 function displayDiffPanel() {
   document.getElementById("graph-panel").style.width = "60%";
   document.getElementById("diff-panel").style.width = "40%";
+  displayDiffPanelButtons();
 }
 
 function hideDiffPanel() {
   document.getElementById("diff-panel").style.width = "0";
   document.getElementById("graph-panel").style.width = "100%";
+  hideDiffPanelButtons();
 }
 
 function hideAuthenticatePanel() {
@@ -68,3 +70,14 @@ function hideAuthenticatePanel() {
 function displayAuthenticatePanel() {
   document.getElementById("authenticate").style.zIndex = "20";
 }
+
+function displayDiffPanelButtons(){
+  document.getElementById("save-button").style.visibility = "visible";
+  document.getElementById("cancel-button").style.visibility = "visible";
+}
+
+function hideDiffPanelButtons(){
+  document.getElementById("save-button").style.visibility = "hidden";
+  document.getElementById("cancel-button").style.visibility = "hidden";
+}
+
