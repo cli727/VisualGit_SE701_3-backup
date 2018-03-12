@@ -1,4 +1,6 @@
 var cred;
+var blue = "#39c0ba";
+var gray = "#5b6969";
 function collpaseSignPanel() {
     $('#nav-collapse1').collapse('hide');
 }
@@ -63,4 +65,21 @@ function displayDiffPanelButtons() {
 function hideDiffPanelButtons() {
     document.getElementById("save-button").style.visibility = "hidden";
     document.getElementById("cancel-button").style.visibility = "hidden";
+    disableSaveCancelButton();
+}
+function disableSaveCancelButton() {
+    var saveButton = document.getElementById("save-button");
+    var cancelButton = document.getElementById("cancel-button");
+    saveButton.disabled = true;
+    saveButton.style.backgroundColor = gray;
+    cancelButton.disabled = true;
+    cancelButton.style.backgroundColor = gray;
+}
+function enableSaveCancelButton() {
+    var saveButton = document.getElementById("save-button");
+    var cancelButton = document.getElementById("cancel-button");
+    saveButton.disabled = false;
+    saveButton.style.backgroundColor = blue;
+    cancelButton.disabled = false;
+    cancelButton.style.backgroundColor = blue;
 }

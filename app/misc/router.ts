@@ -1,4 +1,6 @@
 let cred;
+let blue = "#39c0ba";
+let gray = "#5b6969";
 
 function collpaseSignPanel() {
   $('#nav-collapse1').collapse('hide');
@@ -79,5 +81,23 @@ function displayDiffPanelButtons(){
 function hideDiffPanelButtons(){
   document.getElementById("save-button").style.visibility = "hidden";
   document.getElementById("cancel-button").style.visibility = "hidden";
+  disableSaveCancelButton();
 }
 
+function disableSaveCancelButton() {
+  let saveButton = document.getElementById("save-button");
+  let cancelButton = document.getElementById("cancel-button");
+  saveButton.disabled = true;
+  saveButton.style.backgroundColor = gray;
+  cancelButton.disabled = true;
+  cancelButton.style.backgroundColor = gray;
+}
+
+function enableSaveCancelButton() {
+  let saveButton = document.getElementById("save-button");
+  let cancelButton = document.getElementById("cancel-button");
+  saveButton.disabled = false;
+  saveButton.style.backgroundColor = blue;
+  cancelButton.disabled = false;
+  cancelButton.style.backgroundColor = blue;
+}

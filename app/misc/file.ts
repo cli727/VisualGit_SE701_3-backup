@@ -9,43 +9,41 @@ function readFromFile(filePath) {
 
     let doc = document.getElementById("diff-panel-body");
     lineReader.on("line", function (line) {
-      let element = document.createElement("div");
-      element.textContent = line;
-      doc.appendChild(element);
+      appendLineToDoc(doc,line);
     });
   }
+
+  function appendLineToDoc(doc,line){
+    let element = document.createElement("div");
+    element.textContent = line;
+    doc.appendChild(element);
+  }
+
   function saveFile() {
+    let fileContent = generateFileContent();
+    fs.writeFile(fileLocation, fileContent, 'utf8', function(err) {
+        if (err) throw err;
+        saveSuccess();
+    });
+}
+
+function generateFileContent(){
     let doc = document.getElementById("diff-panel-body");
     let children = doc.childNodes;
     
     let content = "";
     children.forEach(function (child) {
         content += child.textContent + "\n";
-      });
-    doc.textContent = content;
-    fs.writeFile(fileLocation, content, 'utf8', function(err) {
-        if (err) throw err;
-        displayModal("File saved!");
     });
+    doc.textContent = content;
+    return content;
 }
 
 function saveSuccess(){
+    displayModal("File saved!");
 }
 
 function cancelEdit(){
     hideDiffPanel();
 }
 
-function enableSaveCancelButton() {
-  let saveButton = document.getElementById("save-button");
-  let cancelButton = document.getElementById("cancel-button");
-  saveButton.disabled = false;
-  cancelButton.disabled = false;
-}
-
-function disableSaveCancelButton() {
-    let saveButton = document.getElementById("save-button");
-    let cancelButton = document.getElementById("cancel-button");
-    saveButton.disabled = true;
-    cancelButton.disabled = true;
-  }
